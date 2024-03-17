@@ -264,6 +264,7 @@ static InstallResult apply_update_menu(Device* device, Device::BuiltinAction* re
   for (;;) {
     items.clear();
     items.push_back("ADB Sideload");
+    items.push_back("Choose from internal storage (/sdcard)");
     VolumeManager::Instance()->getVolumeInfo(volumes);
     for (auto vol = volumes.begin(); vol != volumes.end(); /* empty */) {
       if (!vol->mMountable) {
@@ -290,6 +291,8 @@ static InstallResult apply_update_menu(Device* device, Device::BuiltinAction* re
 
     if (chosen == item_sideload) {
       status = ApplyFromAdb(device, false /* rescue_mode */, reboot_action);
+    } else if (chosen == 1) {
+      status = ApplyFromSdcard(device);
     } else {
       status = ApplyFromStorage(device, volumes[chosen - 1]);
     }
