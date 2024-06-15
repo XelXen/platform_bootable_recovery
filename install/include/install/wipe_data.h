@@ -35,4 +35,5 @@ int removeDir(RecoveryUI* ui, const std::string path, bool skipParent);
 bool WipeDataDir(Device* device, bool skipParent);
 
 // Returns true on success.
-bool WipeSystem(RecoveryUI* ui, const std::function<bool()>& confirm);
+bool WipeSystem(RecoveryUI* ui, const std::function<bool()>& confirm,
+                std::string_view new_fstype = "");
