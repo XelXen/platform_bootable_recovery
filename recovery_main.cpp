@@ -529,6 +529,8 @@ int main(int argc, char** argv) {
     }
   }
 
+  device->InitDevice();
+
   while (true) {
 #if 0
     // We start adbd in recovery for the device with userdebug build or a unlocked bootloader.
