@@ -230,11 +230,7 @@ bool WipeSystem(RecoveryUI* ui, const std::function<bool()>& confirm_func) {
   }
 
   ui->Print("\n-- Wiping system...\n");
-
-  // Assuming you want to wipe the system with a specific filesystem type (e.g., ext4)
-  std::string_view new_fstype = "ext4";  // Replace with appropriate filesystem type
-
-  bool success = EraseVolume(android::fs_mgr::GetSystemRoot().c_str(), ui, new_fstype);
+  bool success = EraseVolume(android::fs_mgr::GetSystemRoot().c_str(), ui);
   ui->Print("System wipe %s.\n", success ? "complete" : "failed");
   return success;
 }
